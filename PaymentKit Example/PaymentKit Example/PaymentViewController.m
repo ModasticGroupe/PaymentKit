@@ -47,12 +47,28 @@
     [fillButton setTitle:@"Fill Card Number Field" forState:UIControlStateNormal];
     [fillButton addTarget:self action:@selector(fill) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:fillButton];
+    
+    UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 140, 290, 50)];
+    [clearButton.layer setCornerRadius:3.f];
+    [clearButton.layer setBorderColor:[[UIColor colorWithWhite:0.2 alpha:0.2f] CGColor]];
+    [clearButton.layer setBorderWidth:1.f];
+    [clearButton setBackgroundColor:[UIColor whiteColor]];
+    [clearButton setTitleColor:[UIColor colorWithWhite:0.2 alpha:1.f] forState:UIControlStateNormal];
+    [clearButton setTitle:@"Clear" forState:UIControlStateNormal];
+    [clearButton addTarget:self action:@selector(clear) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:clearButton];
 }
 
 - (void)fill
 {
     [self.paymentView setTextFieldCardNumber:@"4111111111111111"];
 }
+
+- (void)clear
+{
+    [self.paymentView clearFields];
+}
+
 
 - (void) paymentView:(PTKView *)paymentView withCard:(PTKCard *)card isValid:(BOOL)valid
 {

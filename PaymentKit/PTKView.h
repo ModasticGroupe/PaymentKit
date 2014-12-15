@@ -24,6 +24,7 @@
 @interface PTKView : UIView
 
 - (void)setTextFieldCardNumber:(NSString*)cardNumber;
+- (void)clearFields;
 - (BOOL)isValid;
 
 @property (nonatomic, readonly) UIView *opaqueOverGradientView;

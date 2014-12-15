@@ -619,4 +619,12 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
         [self performSelector:@selector(stateMeta) withObject:nil afterDelay:0.3];
 }
 
+- (void)clearFields
+{
+    self.cardNumberField.text = nil;
+    self.cardExpiryField.text = nil;
+    self.cardCVCField.text = nil;
+    [self stateCardNumber];
+}
+
 @end
