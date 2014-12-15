@@ -98,7 +98,6 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     [self setupScanButtonView];
 
     [self.innerView addSubview:self.cardNumberField];
-    [self addSubview:self.scanButtonView];
 
     UIImageView *gradientImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 34)];
 //    gradientImageView.image = [UIImage imageNamed:@"gradient"];
@@ -112,7 +111,8 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 
     [self addSubview:self.innerView];
     [self addSubview:self.placeholderView];
-
+    [self addSubview:self.scanButtonView];
+    
     [self stateCardNumber];
 }
 
@@ -659,6 +659,13 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     if ([self.delegate respondsToSelector:@selector(paymentViewDidTapScanCard:)]) {
         [self.delegate paymentViewDidTapScanCard:self];
     }
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self.scanButtonView setFrame:CGRectMake(self.frame.size.width - 45, 8, 26, 26)];
+    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5)];
 }
 
 @end

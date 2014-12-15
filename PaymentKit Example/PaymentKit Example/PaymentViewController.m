@@ -69,6 +69,10 @@
     [self.paymentView clearFields];
 }
 
+- (void)paymentViewDidTapScanCard:(PTKView *)paymentView
+{
+    NSLog(@"tapped scan card");
+}
 
 - (void) paymentView:(PTKView *)paymentView withCard:(PTKCard *)card isValid:(BOOL)valid
 {
