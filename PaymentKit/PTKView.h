@@ -19,6 +19,7 @@
 @protocol PTKViewDelegate <NSObject>
 @optional
 - (void)paymentView:(PTKView *)paymentView withCard:(PTKCard *)card isValid:(BOOL)valid;
+- (void)paymentViewDidTapScanCard:(PTKView *)paymentView;
 @end
 
 @interface PTKView : UIView
@@ -39,6 +40,7 @@
 @property IBOutlet PTKTextField *cardExpiryField;
 @property IBOutlet PTKTextField *cardCVCField;
 @property IBOutlet UIImageView *placeholderView;
+@property (strong, nonatomic) UIImageView *scanButtonView;
 @property (nonatomic, weak) id <PTKViewDelegate> delegate;
 @property (readonly) PTKCard *card;
 

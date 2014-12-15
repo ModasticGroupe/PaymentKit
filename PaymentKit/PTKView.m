@@ -95,8 +95,10 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     [self setupCardNumberField];
     [self setupCardExpiryField];
     [self setupCardCVCField];
+    [self setupScanButtonView];
 
     [self.innerView addSubview:self.cardNumberField];
+    [self addSubview:self.scanButtonView];
 
     UIImageView *gradientImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 34)];
 //    gradientImageView.image = [UIImage imageNamed:@"gradient"];
@@ -231,9 +233,10 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
                          completion:^(BOOL completed) {
                              [self.cardExpiryField removeFromSuperview];
                              [self.cardCVCField removeFromSuperview];
+                             [self showScanButton];
                          }];
     }
-
+    
 //    [self.cardNumberField becomeFirstResponder];
 }
 
@@ -261,6 +264,8 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     lastGroupSize = [self.cardNumber.lastGroup sizeWithAttributes:attributes];
 #endif
 
+    [self hideScanButton];
+    
     CGFloat frameX = self.cardNumberField.frame.origin.x - (cardNumberSize.width - lastGroupSize.width + 6);
 
     [UIView animateWithDuration:0.05 delay:0.35 options:UIViewAnimationOptionCurveEaseInOut
@@ -625,6 +630,35 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     self.cardExpiryField.text = nil;
     self.cardCVCField.text = nil;
     [self stateCardNumber];
+}
+
+- (void)setupScanButtonView
+{
+    self.scanButtonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"card-scan.png"]];
+    [self.scanButtonView setBackgroundColor:[UIColor clearColor]];
+    [self.scanButtonView setContentMode:UIViewContentModeScaleAspectFit];
+    [self.scanButtonView setUserInteractionEnabled:YES];
+    [self.scanButtonView setFrame:CGRectMake(self.frame.size.width - 45, 8, 26, 26)];
+    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5)];
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanButtonTap)];
+    [self.scanButtonView addGestureRecognizer:tgr];
+}
+
+- (void)showScanButton
+{
+    [self.scanButtonView setHidden:NO];
+}
+
+- (void)hideScanButton
+{
+    [self.scanButtonView setHidden:YES];
+}
+
+- (void)scanButtonTap
+{
+    if ([self.delegate respondsToSelector:@selector(paymentViewDidTapScanCard:)]) {
+        [self.delegate paymentViewDidTapScanCard:self];
+    }
 }
 
 @end
