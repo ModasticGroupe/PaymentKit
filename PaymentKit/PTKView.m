@@ -29,6 +29,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 @private
     BOOL _isInitialState;
     BOOL _isValidState;
+    BOOL _isEmptyState;
 }
 
 @property (nonatomic, readonly, assign) UIResponder *firstResponderField;
@@ -78,6 +79,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 {
     _isInitialState = YES;
     _isValidState = NO;
+    _isEmptyState = YES;
 
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, 290, 46);
     self.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.05];
@@ -237,12 +239,15 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
                          }];
     }
     
-//    [self.cardNumberField becomeFirstResponder];
+    if (!_isEmptyState) {
+        [self.cardNumberField becomeFirstResponder];
+    }
 }
 
 - (void)stateMeta
 {
     _isInitialState = NO;
+    _isEmptyState = NO;
 
     CGSize cardNumberSize;
     CGSize lastGroupSize;

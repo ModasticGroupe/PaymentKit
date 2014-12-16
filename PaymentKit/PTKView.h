@@ -20,6 +20,7 @@
 @optional
 - (void)paymentView:(PTKView *)paymentView withCard:(PTKCard *)card isValid:(BOOL)valid;
 - (void)paymentViewDidTapScanCard:(PTKView *)paymentView;
+- (void)paymentViewDidChange:(PTKView*)paymentView isValid:(BOOL)valid;
 @end
 
 @interface PTKView : UIView
