@@ -97,7 +97,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     [self setupCardNumberField];
     [self setupCardExpiryField];
     [self setupCardCVCField];
-    [self setupScanButtonView];
+    [self setupScanCardView];
 
     [self.innerView addSubview:self.cardNumberField];
 
@@ -113,8 +113,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 
     [self addSubview:self.innerView];
     [self addSubview:self.placeholderView];
-    [self addSubview:self.scanButtonView];
-    [self addSubview:self.scanLabel];
+    [self addSubview:self.scanCardView];
     
     [self stateCardNumber];
 }
@@ -638,35 +637,41 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     [self stateCardNumber];
 }
 
-- (void)setupScanButtonView
+- (void)setupScanCardView
 {
-    self.scanButtonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"card-scan.png"]];
-    [self.scanButtonView setBackgroundColor:[UIColor clearColor]];
-    [self.scanButtonView setContentMode:UIViewContentModeScaleAspectFit];
-    [self.scanButtonView setUserInteractionEnabled:YES];
-    [self.scanButtonView setFrame:CGRectMake(self.frame.size.width - 45, 8, 26, 26)];
-    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5)];
-    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanButtonTap)];
-    [self.scanButtonView addGestureRecognizer:tgr];
+    self.scanCardView = [[ScanCardView alloc] initWithFrame:CGRectZero];
+    [self.scanCardView setUserInteractionEnabled:YES];
     
-    self.scanLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 12)];
-    [self.scanLabel setBackgroundColor:[UIColor clearColor]];
-    [self.scanLabel setTextColor:[UIColor colorWithWhite:0.2 alpha:1.f]];
-    [self.scanLabel setFont:[UIFont boldSystemFontOfSize:9]];
-    [self.scanLabel setText:@"Scan"];
-    [self.scanLabel sizeToFit];
+//    self.scanButtonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"card-scan.png"]];
+//    [self.scanButtonView setBackgroundColor:[UIColor clearColor]];
+//    [self.scanButtonView setContentMode:UIViewContentModeScaleAspectFit];
+//    [self.scanButtonView setUserInteractionEnabled:YES];
+//    [self.scanButtonView setFrame:CGRectMake(self.frame.size.width - 45, 8, 26, 26)];
+//    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5)];
+    
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanButtonTap)];
+    [self.scanCardView addGestureRecognizer:tgr];
+    
+//    self.scanLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 12)];
+//    [self.scanLabel setBackgroundColor:[UIColor clearColor]];
+//    [self.scanLabel setTextColor:[UIColor colorWithWhite:0.2 alpha:1.f]];
+//    [self.scanLabel setFont:[UIFont boldSystemFontOfSize:9]];
+//    [self.scanLabel setText:@"Scan"];
+//    [self.scanLabel sizeToFit];
 }
 
 - (void)showScanButton
 {
-    [self.scanButtonView setHidden:NO];
-    [self.scanLabel setHidden:NO];
+    [self.scanCardView setHidden:NO];
+//    [self.scanButtonView setHidden:NO];
+//    [self.scanLabel setHidden:NO];
 }
 
 - (void)hideScanButton
 {
-    [self.scanButtonView setHidden:YES];
-    [self.scanLabel setHidden:YES];
+    [self.scanCardView setHidden:YES];
+//    [self.scanButtonView setHidden:YES];
+//    [self.scanLabel setHidden:YES];
 }
 
 - (void)scanButtonTap
@@ -679,10 +684,18 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.scanButtonView setFrame:CGRectMake(self.frame.size.width - 45, 8, 26, 26)];
-    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 - 4)];
-    [self.scanLabel setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 + 12)];
-    [self.innerView setCenter:CGPointMake(self.innerView.center.x, self.frame.size.height * 0.5)];
+    [self.scanCardView setFrame:CGRectMake(self.frame.size.width - self.frame.size.height,
+                                           0,
+                                           self.frame.size.height,
+                                           self.frame.size.height)];
+    
+//    [self.scanButtonView setFrame:CGRectMake(self.frame.size.width - self.frame.size.height,
+//                                             8, self.frame.size.height * 0.58,
+//                                             self.frame.size.height * 0.58)];
+//    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 - 4)];
+//    [self.scanLabel setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 + self.scanButtonView.frame.size.height * 0.5)];
+    
+    [self.innerView setCenter:CGPointMake(self.innerView.center.x, self.frame.size.height * 0.5 - 1)];
     [self.placeholderView setCenter:CGPointMake(self.placeholderView.center.x, self.frame.size.height * 0.5)];
 }
 

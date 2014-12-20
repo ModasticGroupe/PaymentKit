@@ -13,6 +13,7 @@
 #import "PTKCardCVC.h"
 #import "PTKAddressZip.h"
 #import "PTKUSAddressZip.h"
+#import "ScanCardView.h"
 
 @class PTKView, PTKTextField;
 
@@ -41,8 +42,7 @@
 @property IBOutlet PTKTextField *cardExpiryField;
 @property IBOutlet PTKTextField *cardCVCField;
 @property IBOutlet UIImageView *placeholderView;
-@property (strong, nonatomic) UIImageView *scanButtonView;
-@property (strong, nonatomic) UILabel *scanLabel;
+@property (strong, nonatomic) ScanCardView *scanCardView;
 @property (nonatomic, weak) id <PTKViewDelegate> delegate;
 @property (readonly) PTKCard *card;
 

@@ -57,6 +57,16 @@
     [clearButton setTitle:@"Clear" forState:UIControlStateNormal];
     [clearButton addTarget:self action:@selector(clear) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clearButton];
+    
+    UIButton *resizeButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 200, 290, 50)];
+    [resizeButton.layer setCornerRadius:3.f];
+    [resizeButton.layer setBorderColor:[[UIColor colorWithWhite:0.2 alpha:0.2f] CGColor]];
+    [resizeButton.layer setBorderWidth:1.f];
+    [resizeButton setBackgroundColor:[UIColor whiteColor]];
+    [resizeButton setTitleColor:[UIColor colorWithWhite:0.2 alpha:1.f] forState:UIControlStateNormal];
+    [resizeButton setTitle:@"Shrink" forState:UIControlStateNormal];
+    [resizeButton addTarget:self action:@selector(resize) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:resizeButton];
 }
 
 - (void)fill
@@ -67,6 +77,12 @@
 - (void)clear
 {
     [self.paymentView clearFields];
+}
+
+- (void)resize
+{
+    [self.paymentView setFrame:CGRectMake(self.paymentView.frame.origin.x, self.paymentView.frame.origin.y,
+                                          self.paymentView.frame.size.width, 35)];
 }
 
 - (void)paymentViewDidTapScanCard:(PTKView *)paymentView

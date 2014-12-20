@@ -14,6 +14,7 @@
 		4C332B4316FA5297009C782D /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C332B4116FA5297009C782D /* textfield.png */; };
 		4C332B4416FA5297009C782D /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C332B4216FA5297009C782D /* textfield@2x.png */; };
 		4C332B4B16FA6240009C782D /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C332B4A16FA6240009C782D /* gradient@2x.png */; };
+		625A91CA1A4502D900BC3474 /* ScanCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 625A91C91A4502D900BC3474 /* ScanCardView.m */; };
 		62C7A4DD1A3F75E50068C0FC /* card-scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C7A4DA1A3F75E50068C0FC /* card-scan.png */; };
 		62C7A4DE1A3F75E50068C0FC /* card-scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C7A4DB1A3F75E50068C0FC /* card-scan@2x.png */; };
 		62C7A4DF1A3F75E50068C0FC /* card-scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C7A4DC1A3F75E50068C0FC /* card-scan@3x.png */; };
@@ -77,6 +78,8 @@
 		4C332B4116FA5297009C782D /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
 		4C332B4216FA5297009C782D /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
 		4C332B4A16FA6240009C782D /* gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient@2x.png"; sourceTree = "<group>"; };
+		625A91C81A4502D900BC3474 /* ScanCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCardView.h; sourceTree = "<group>"; };
+		625A91C91A4502D900BC3474 /* ScanCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCardView.m; sourceTree = "<group>"; };
 		62C7A4DA1A3F75E50068C0FC /* card-scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card-scan.png"; sourceTree = "<group>"; };
 		62C7A4DB1A3F75E50068C0FC /* card-scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card-scan@2x.png"; sourceTree = "<group>"; };
 		62C7A4DC1A3F75E50068C0FC /* card-scan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card-scan@3x.png"; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 		347D15CA8C87A3417C8F0DA4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				625A91C81A4502D900BC3474 /* ScanCardView.h */,
+				625A91C91A4502D900BC3474 /* ScanCardView.m */,
 				347D1725B7473FB930E67F3E /* PTKView.h */,
 				347D118D23A60619342D3892 /* PTKView.m */,
 				347D124F084FD525A2870677 /* PTKTextField.h */,
@@ -472,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA45AC7D16AE350D0003A41D /* main.m in Sources */,
+				625A91CA1A4502D900BC3474 /* ScanCardView.m in Sources */,
 				FA45AC8116AE350D0003A41D /* AppDelegate.m in Sources */,
 				FA45AC8A16AE350E0003A41D /* PaymentViewController.m in Sources */,
 				FA45ACA416AF1EE80003A41D /* PTKCardNumber.m in Sources */,
