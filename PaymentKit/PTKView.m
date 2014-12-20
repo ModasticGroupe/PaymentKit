@@ -114,6 +114,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     [self addSubview:self.innerView];
     [self addSubview:self.placeholderView];
     [self addSubview:self.scanButtonView];
+    [self addSubview:self.scanLabel];
     
     [self stateCardNumber];
 }
@@ -647,16 +648,25 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5)];
     UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanButtonTap)];
     [self.scanButtonView addGestureRecognizer:tgr];
+    
+    self.scanLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 12)];
+    [self.scanLabel setBackgroundColor:[UIColor clearColor]];
+    [self.scanLabel setTextColor:[UIColor colorWithWhite:0.2 alpha:1.f]];
+    [self.scanLabel setFont:[UIFont boldSystemFontOfSize:9]];
+    [self.scanLabel setText:@"Scan"];
+    [self.scanLabel sizeToFit];
 }
 
 - (void)showScanButton
 {
     [self.scanButtonView setHidden:NO];
+    [self.scanLabel setHidden:NO];
 }
 
 - (void)hideScanButton
 {
     [self.scanButtonView setHidden:YES];
+    [self.scanLabel setHidden:YES];
 }
 
 - (void)scanButtonTap
@@ -670,7 +680,9 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 {
     [super layoutSubviews];
     [self.scanButtonView setFrame:CGRectMake(self.frame.size.width - 45, 8, 26, 26)];
-    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5)];
+    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 - 3)];
+    [self.scanLabel setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 + 14)];
+    [self.innerView setCenter:CGPointMake(self.innerView.center.x, self.frame.size.height * 0.5)];
 }
 
 @end

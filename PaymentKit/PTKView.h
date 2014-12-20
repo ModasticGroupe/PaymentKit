@@ -42,6 +42,7 @@
 @property IBOutlet PTKTextField *cardCVCField;
 @property IBOutlet UIImageView *placeholderView;
 @property (strong, nonatomic) UIImageView *scanButtonView;
+@property (strong, nonatomic) UILabel *scanLabel;
 @property (nonatomic, weak) id <PTKViewDelegate> delegate;
 @property (readonly) PTKCard *card;
 
