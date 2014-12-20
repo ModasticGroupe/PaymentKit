@@ -680,9 +680,10 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 {
     [super layoutSubviews];
     [self.scanButtonView setFrame:CGRectMake(self.frame.size.width - 45, 8, 26, 26)];
-    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 - 3)];
-    [self.scanLabel setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 + 14)];
+    [self.scanButtonView setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 - 4)];
+    [self.scanLabel setCenter:CGPointMake(self.scanButtonView.center.x, self.frame.size.height * 0.5 + 12)];
     [self.innerView setCenter:CGPointMake(self.innerView.center.x, self.frame.size.height * 0.5)];
+    [self.placeholderView setCenter:CGPointMake(self.placeholderView.center.x, self.frame.size.height * 0.5)];
 }
 
 @end
