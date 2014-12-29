@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PTKView.h"
+#import "PTKCardImage.h"
 
 @interface PaymentViewController : UIViewController <PTKViewDelegate>
 

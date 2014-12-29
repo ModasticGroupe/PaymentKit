@@ -67,6 +67,11 @@
     [resizeButton setTitle:@"Shrink" forState:UIControlStateNormal];
     [resizeButton addTarget:self action:@selector(resize) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:resizeButton];
+    
+    UIImageView *cardImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 300, 50, 50)];
+    [cardImage setContentMode:UIViewContentModeCenter];
+    [cardImage setImage:[PTKCardImage imageForCardType:PTKCardTypeVisa]];
+    [self.view addSubview:cardImage];
 }
 
 - (void)fill
