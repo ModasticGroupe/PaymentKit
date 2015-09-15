@@ -12,7 +12,7 @@
 
 @implementation PTKTextField
 
-//@synthesize delegate;
+@dynamic delegate;
 
 + (NSString *)textByRemovingUselessSpacesFromString:(NSString *)string
 {
